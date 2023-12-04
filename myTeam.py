@@ -163,10 +163,8 @@ class StallReflexAgent(ReflexCaptureAgent):
         if score <= 5:
             # Defining winning margin based on current food
             win_margin = len(my_food) - len(enemy_food)
-            print(win_margin)
             # If we are not 5 foods ahead toggle offensive behaviour // If we are not going to lose
             if win_margin < 5 and len(my_food) != 2:
-                print('OFFENSE')
                 # Toggle offense
                 features['on_defense'] = 0
                 features['successor_score'] = len(enemy_food)
@@ -195,7 +193,6 @@ class StallReflexAgent(ReflexCaptureAgent):
                     features['objective_distance'] = min_distance
             # Else toggle defensive behaviour
             else:
-                print('DEFENSE')
                 # Toggle defense
                 features['on_defense'] = 1
                 features['num_invaders'] = len(invaders)
@@ -227,7 +224,6 @@ class StallReflexAgent(ReflexCaptureAgent):
                         features['objective_distance'] = min_distance
         # If we are winning with a margin of 5 toggle defense
         else:
-            print('WINNING')
             features['on_defense'] = 1
             features['successor_score'] = 0
             features['fear'] = 0
